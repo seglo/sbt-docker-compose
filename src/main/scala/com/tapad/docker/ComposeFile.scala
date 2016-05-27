@@ -238,7 +238,7 @@ trait ComposeFile extends SettingsHelper with ComposeCustomTagHelpers {
    * @return The path to the temporary Compose File
    */
   def saveComposeFile(finalYaml: yamlData): String = {
-    val updatedComposePath = File.createTempFile("compose-updated", ".yml").getPath
+    val updatedComposePath = File.createTempFile("compose-updated", ".yml", new File("").getAbsoluteFile).getPath
     val writer = new FileWriter(updatedComposePath)
     try {
       new Yaml().dump(finalYaml.asJava, writer)
